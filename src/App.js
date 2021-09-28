@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route } from 'react-router-dom';
+import PostListPage from './pages/PostListPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import WritePage from './pages/WritePage';
+import PostPage from './pages/PostPage';
+// Helmet import
+import { Helmet } from 'react-helmet-async';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Helmet><title>Korin's project</title></Helmet>
+      {/* 배열에 넣어줌으로써 여러 개의 경로를 쉽게 설정. 리액트 v5 이후부터 이렇게 2번쓰지 않고 배열에 담기 가능 */}
+      {/* @:username 방식은 http://localhost:3000/@korin 과 같이 username 을 파라미터로 읽을 수 있음.  */}
+      <Route component={PostListPage} path={['/@:username', '/']} exact />
+      <Route component={LoginPage} path="/login" />
+      <Route component={RegisterPage} path="/register" />
+      <Route component={WritePage} path="/write" />
+      <Route component={PostPage} path="/@:username/:postId" />
+    </>
   );
 }
 
