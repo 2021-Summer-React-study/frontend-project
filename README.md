@@ -1,4 +1,4 @@
-# redux-tutorial
+# React-frontent project
 
 리.다.기 24~27장에 나오는 프론트엔드 프로젝트
 
